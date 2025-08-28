@@ -1,3 +1,3 @@
 #!/bin/sh
 
-curl -fsSL https://opencode.ai/install | bash
+su - "$_REMOTE_USER" -c "curl -fsSL https://opencode.ai/install | bash"
