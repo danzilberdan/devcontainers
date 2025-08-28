@@ -10,6 +10,9 @@ A collection of Dev Container features to enhance your development environment.
 
 This feature installs OpenCode by SST directly into your Dev Container, giving you access to advanced code intelligence tools right in your development environment.
 
+<details>
+<summary>Installation & Configuration</summary>
+
 #### Installation
 
 Add the OpenCode feature to your `devcontainer.json`:
@@ -91,5 +94,7 @@ During installation, this file will be copied to: `~/.local/share/opencode/auth.
 ##### Security Note
 
 Ensure your `auth.json` file is not committed to version control. If you're referencing an existing file from your host OpenCode installation, make sure it contains the API keys you want to use in the dev container. Consider adding it to your `.gitignore` file if it's in your workspace.
+
+</details>
 
 <!-- Future features can be added here as additional ### sections -->
