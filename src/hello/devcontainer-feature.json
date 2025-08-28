@@ -1,21 +1,9 @@
 {
-    "name": "Hello, World!",
-    "id": "hello",
-    "version": "1.0.2",
-    "description": "A hello world feature",
-    "options": {
-        "greeting": {
-            "type": "string",
-            "proposals": [
-                "hey",
-                "hello",
-                "hi",
-                "howdy"
-            ],
-            "default": "hey",
-            "description": "Select a pre-made greeting, or enter your own"
-        }
-    },
+    "name": "opencode",
+    "id": "opencode",
+    "version": "0.0.1",
+    "description": "Installs opencode by SST",
+    "options": {},
     "installsAfter": [
         "ghcr.io/devcontainers/features/common-utils"
     ]
