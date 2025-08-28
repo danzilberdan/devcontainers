@@ -17,6 +17,13 @@
             ]
         }
     },
+    "mounts": [
+        {
+            "source": "${localWorkspaceFolder}/auth.json",
+            "target": "/tmp/opencode-auth.json",
+            "type": "bind"
+        }
+    ],
     "features": {
         "ghcr.io/devcontainers/features/docker-in-docker:2": {},
         "ghcr.io/danzilberdan/devcontainers/opencode:0": {}
