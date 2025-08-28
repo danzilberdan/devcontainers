@@ -2,8 +2,26 @@
     "name": "opencode",
     "id": "opencode",
     "version": "0.0.1",
-    "description": "Installs opencode by SST",
-    "options": {},
+    "description": "Installs opencode by SST with API keys configuration",
+    "documentationURL": "https://opencode.ai",
+    "options": {
+        "authFile": {
+            "type": "string",
+            "description": "Full path to JSON file with API keys for opencode on the host. Leave empty to skip API keys configuration.",
+            "default": "",
+            "proposals": [
+                "${localWorkspaceFolder}/.opencode/auth.json",
+                "~/.opencode/auth.json"
+            ]
+        }
+    },
+    "mounts": [
+        {
+            "source": "${input:authFile}",
+            "target": "/tmp/opencode-auth.json",
+            "type": "bind"
+        }
+    ],
     "installsAfter": [
         "ghcr.io/devcontainers/features/common-utils"
     ]
