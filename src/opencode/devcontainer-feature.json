@@ -1,7 +1,7 @@
 {
     "name": "opencode",
     "id": "opencode",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "description": "Installs opencode by SST with API keys configuration",
     "documentationURL": "https://opencode.ai",
     "installsAfter": [
