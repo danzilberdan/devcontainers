@@ -19,7 +19,7 @@
     },
     "mounts": [
         {
-            "source": "${localWorkspaceFolder}/auth.json",
+            "source": "${localWorkspaceFolder}/.opencode/auth.json",
             "target": "/mnt/opencode-auth.json",
             "type": "bind"
         }

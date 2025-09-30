@@ -97,4 +97,27 @@ Ensure your `auth.json` file is not committed to version control. If you're refe
 
 </details>
 
+### Infisical
+
+[Infisical](https://infisical.com) is a secret management platform that helps you manage and access secrets securely.
+
+This feature installs the Infisical CLI directly into your Dev Container, allowing you to interact with Infisical secrets from within your development environment.
+
+<details>
+<summary>Installation</summary>
+
+#### Installation
+
+Add the Infisical feature to your `devcontainer.json`:
+
+```json
+{
+    "features": {
+        "ghcr.io/danzilberdan/devcontainers/infisical:0": {}
+    }
+}
+```
+
+</details>
+
 <!-- Future features can be added here as additional ### sections -->

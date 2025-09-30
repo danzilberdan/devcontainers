@@ -1,0 +1,10 @@
+{
+    "name": "infisical",
+    "id": "infisical",
+    "version": "0.0.1",
+    "description": "Installs Infisical CLI",
+    "documentationURL": "https://infisical.com/docs/cli/overview",
+    "installsAfter": [
+        "ghcr.io/devcontainers/features/common-utils"
+    ]
+}
