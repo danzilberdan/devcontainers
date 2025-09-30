@@ -1,7 +1,7 @@
 
 # opencode (opencode)
 
-Installs opencode by SST
+Installs opencode by SST with API keys configuration
 
 ## Example Usage
 
@@ -11,10 +11,6 @@ Installs opencode by SST
 }
 ```
 
-## Options
-
-| Options Id | Description | Type | Default Value |
-|-----|-----|-----|-----|
 
 
 
