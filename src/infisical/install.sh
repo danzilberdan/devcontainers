@@ -18,11 +18,12 @@ else
 fi
 EOF
 )
+    echo "$INNER_SCRIPT" > /tmp/inner_script.sh
 
     INFISICAL_ENV_FUNCTION=$(cat <<EOF
 infisical_env() {
     if [ -f "$DOTENVFILE" ]; then
-        echo "$INNER_SCRIPT" | bash > /tmp/.env
+        cat /tmp/inner_script.sh | bash > /tmp/.env
         if [ \$? -eq 0 ]; then
             set +x
             source /tmp/.env
