@@ -4,6 +4,13 @@
     "version": "0.0.1",
     "description": "Installs Infisical CLI",
     "documentationURL": "https://infisical.com/docs/cli/overview",
+    "options": {
+        "dotenvFile": {
+            "type": "string",
+            "default": "",
+            "description": "Path to dotenv file containing INFISICAL_PROJECT_ID and INFISICAL_ENV"
+        }
+    },
     "installsAfter": [
         "ghcr.io/devcontainers/features/common-utils"
     ]
