@@ -1,7 +1,7 @@
 {
     "name": "infisical",
     "id": "infisical",
-    "version": "0.0.6",
+    "version": "0.0.7",
     "description": "Installs Infisical CLI",
     "documentationURL": "https://infisical.com/docs/cli/overview",
     "options": {

@@ -9,6 +9,19 @@ apt-get update && apt-get install -y infisical
 # Function to load infisical env - will be injected into shell rc files
 if [ -n "$DOTENVFILE" ]; then
     INNER_SCRIPT=$(cat <<EOF
+KEEP_HOME="\$HOME"
+KEEP_PATH="\$PATH"
+
+# Clear all environment variables
+# The `set -a` makes sure exports work correctly
+for var in $(env | cut -d= -f1); do
+    unset "\$var"
+done
+
+# Restore the kept ones
+export HOME="\$KEEP_HOME"
+export PATH="\$KEEP_PATH"
+
 source "$DOTENVFILE"
 if [ -n "\$INFISICAL_PROJECT_ID" ] && [ -n "\$INFISICAL_ENV" ]; then
     infisical run --projectId "\$INFISICAL_PROJECT_ID" --env "\$INFISICAL_ENV" -- env
@@ -25,9 +38,7 @@ infisical_env() {
     if [ -f "$DOTENVFILE" ]; then
         cat /tmp/inner_script.sh | bash > /tmp/.env
         if [ \$? -eq 0 ]; then
-            set +x
             source /tmp/.env
-            set -x
         fi
     else
         echo "Dotenv file $DOTENVFILE not found"
