@@ -29,6 +29,7 @@ infisical_env() {
         echo \"Dotenv file $DOTENVFILE not found\"
     fi
 }
+infisical_env
 "
     echo "$INFISICAL_ENV_FUNCTION" >> /etc/bash.bashrc
     echo "$INFISICAL_ENV_FUNCTION" >> /etc/zsh/zshrc
