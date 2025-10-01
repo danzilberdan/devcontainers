@@ -104,7 +104,7 @@ Ensure your `auth.json` file is not committed to version control. If you're refe
 This feature installs the Infisical CLI directly into your Dev Container, allowing you to interact with Infisical secrets from within your development environment.
 
 <details>
-<summary>Installation</summary>
+<summary>Installation & Configuration</summary>
 
 #### Installation
 
@@ -117,6 +117,40 @@ Add the Infisical feature to your `devcontainer.json`:
     }
 }
 ```
+
+#### Configuration
+
+To automatically load Infisical secrets into your shell environment, configure a dotenv file with your project ID and environment.
+
+##### Setup
+
+1. Create a dotenv file (e.g., `.infisical.env`) in your workspace with the following variables:
+
+```bash
+INFISICAL_PROJECT_ID=your-project-id
+INFISICAL_ENV=dev
+```
+
+2. Configure the feature in your `devcontainer.json` to point to this file:
+
+```json
+{
+    "features": {
+        "ghcr.io/danzilberdan/devcontainers/infisical:0": {
+            "dotenvFile": "/workspaces/project/.infisical.env"
+        }
+    }
+}
+```
+
+##### How it Works
+
+- Upon container startup, an `infisical_env` function is added to your shell and runs automatically
+- The function reads your configured dotenv file and fetches the corresponding secrets into your environment
+
+##### Security Note
+
+Ensure your dotenv file containing sensitive project IDs is not committed to version control. Consider adding it to your `.gitignore` file.
 
 </details>
 
