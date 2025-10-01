@@ -14,7 +14,7 @@ KEEP_PATH="\$PATH"
 
 # Clear all environment variables
 # The `set -a` makes sure exports work correctly
-for var in $(env | cut -d= -f1); do
+for var in \$(env | cut -d= -f1); do
     unset "\$var"
 done
 
