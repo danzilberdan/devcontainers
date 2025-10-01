@@ -8,29 +8,33 @@ apt-get update && apt-get install -y infisical
 
 # Function to load infisical env - will be injected into shell rc files
 if [ -n "$DOTENVFILE" ]; then
-    INFISICAL_ENV_FUNCTION='
+    INNER_SCRIPT=$(cat <<'INNER_EOF'
+source "$DOTENVFILE"
+if [ -n "$INFISICAL_PROJECT_ID" ] && [ -n "$INFISICAL_ENV" ]; then
+    infisical run --projectId "$INFISICAL_PROJECT_ID" --env "$INFISICAL_ENV" -- env
+else
+    echo "INFISICAL_PROJECT_ID and INFISICAL_ENV must be set in $DOTENVFILE" >&2
+    exit 1
+fi
+INNER_EOF
+)
+
+    INFISICAL_ENV_FUNCTION=$(cat <<EOF
 infisical_env() {
-    if [ -f "'"$DOTENVFILE"'" ]; then
-        bash -c "
-            source \\\""'"$DOTENVFILE"'"\\\"
-            if [ -n \\\"\\\$INFISICAL_PROJECT_ID\\\" ] && [ -n \\\"\\\$INFISICAL_ENV\\\" ]; then
-                infisical run --projectId \\\"\\\$INFISICAL_PROJECT_ID\\\" --env \\\"\\\$INFISICAL_ENV\\\" -- env
-            else
-                echo '\''INFISICAL_PROJECT_ID and INFISICAL_ENV must be set in '"$DOTENVFILE"' >&2
-                exit 1
-            fi
-        " > /tmp/.env
-        if [ $? -eq 0 ]; then
+    if [ -f "$DOTENVFILE" ]; then
+        bash -c "$INNER_SCRIPT" > /tmp/.env
+        if [ \$? -eq 0 ]; then
             set +x
             source /tmp/.env
             set -x
         fi
     else
-        echo "Dotenv file '"$DOTENVFILE"' not found"
+        echo "Dotenv file $DOTENVFILE not found"
     fi
 }
 infisical_env
-'
+EOF
+)
 
     BASHRC_PATH="/home/${_REMOTE_USER}/.bashrc"
     echo "$INFISICAL_ENV_FUNCTION" >> "$BASHRC_PATH"
