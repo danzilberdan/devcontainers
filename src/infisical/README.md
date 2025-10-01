@@ -11,7 +11,11 @@ Installs Infisical CLI
 }
 ```
 
+## Options
 
+| Options Id | Description | Type | Default Value |
+|-----|-----|-----|-----|
+| dotenvFile | Path to dotenv file containing INFISICAL_PROJECT_ID and INFISICAL_ENV | string | - |
 
 
 
