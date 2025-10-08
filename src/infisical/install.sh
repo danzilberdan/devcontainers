@@ -38,7 +38,7 @@ infisical_env() {
     if [ -f "$DOTENVFILE" ]; then
         cat /tmp/inner_script.sh | bash > /tmp/.env
         if [ \$? -eq 0 ]; then
-            source /tmp/.env
+            export $(grep -v '^#' /tmp/.env | xargs)
         fi
     else
         echo "Dotenv file $DOTENVFILE not found"
